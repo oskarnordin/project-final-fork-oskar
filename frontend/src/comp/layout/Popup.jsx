@@ -29,9 +29,7 @@ export const Popup = ({ children, delay }) => {
             <ChevronDownIcon className="h-6 w-6" />
           </IconButton>
 
-          <Typography className="p-2 text-text leading-relaxed text-center">
-            {children}
-          </Typography>
+          <div className="p-2 text-text leading-relaxed text-center">{children}</div>
         </div>
       )}
 

@@ -91,54 +91,51 @@ export const Usersignup = () => {
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label for="name" className="text-fonttext">
-              Name
-              <Input
-                type="text"
-                name="name"
-                aria-label="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-            </label>
+            <Input
+              id="name"
+              label="Name"
+              type="text"
+              name="name"
+              aria-label="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
           </div>
 
           <div className="flex flex-col space-y-1">
-            <label for="email" className="text-fonttext">
-              Email address
-              <Input
-                type="email"
-                name="email"
-                aria-label="email address"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </label>
+            <Input
+              id="email"
+              label="Email address"
+              type="email"
+              name="email"
+              aria-label="email address"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
           </div>
 
           <div className="flex flex-col space-y-1">
-            <label for="password" className="text-fonttext">
-              Password
-              <Input
-                type="password"
-                name="password"
-                aria-label="password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-              />
-            </label>
+            <Input
+              id="password"
+              label="Password"
+              type="password"
+              name="password"
+              aria-label="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
           </div>
 
           {error && (
-            <Typography variant="small" color="red" className="text-center">
+            <Typography variant="small" className="text-red-500 text-center">
               {error}
             </Typography>
           )}
           {success && (
-            <Typography variant="small" color="green" className="text-center">
+            <Typography variant="small" className="text-green-600 text-center">
               User created successfully!
             </Typography>
           )}
@@ -147,7 +144,7 @@ export const Usersignup = () => {
           </Btn>
         </form>
 
-        <Typography variant="medium" className="text-font mt-6 text-center">
+        <Typography variant="small" className="text-font mt-6 text-center">
           Already have an account?{" "}
           <Link to="/login" className="text-main hover:underline">
             Login

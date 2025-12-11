@@ -89,41 +89,35 @@ export const Userlogin = () => {
             </Typography>
           )}
           <div className="flex flex-col space-y-1">
-            <label for="email" className="text-fonttext">
-              Email address
-              <Input
-                type="email"
-                name="email"
-                aria-label="email address"
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
-                className="text-fonttext"
-              />
-            </label>
+            <Input
+              id="email"
+              label="Email address"
+              type="email"
+              name="email"
+              aria-label="email address"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="text-fonttext"
+            />
           </div>
           <div className="flex flex-col space-y-1">
-            <label for="password" className="text-fonttext">
-              Password
-              <Input
-                type="password"
-                name="password"
-                aria-label="password"
-                value={formData.password}
-                onChange={(e) =>
-                  setFormData({ ...formData, password: e.target.value })
-                }
-                className="text-fonttext"
-              />
-            </label>
+            <Input
+              id="password"
+              label="Password"
+              type="password"
+              name="password"
+              aria-label="password"
+              value={formData.password}
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              className="text-fonttext"
+            />
           </div>
           <Btn type="submit" variant="filled" size="md" className="w-full">
             Login
           </Btn>
         </form>
 
-        <Typography variant="medium" className="text-font mt-6 text-center">
+        <Typography variant="small" className="text-font mt-6 text-center">
           Don’t have an account?{" "}
           <Link to="/signup" className="text-main hover:underline">
             Sign up

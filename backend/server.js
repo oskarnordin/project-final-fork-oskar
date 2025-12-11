@@ -5,7 +5,7 @@ import expressListEndpoints from 'express-list-endpoints';
 import mongoose from 'mongoose';
 
 import { router as emailRoutes } from './routes/emailRoutes.js';
-import mongoEmailScheduler from './routes/mongoEmailScheduler.js';
+import startMongoEmailScheduler from './routes/mongoEmailScheduler.js';
 import subscriptionRoutes from './routes/subscriptionRoutes.js';
 import updateFreeTrialRoutes from './routes/updateFreeTrialRoutes.js';
 import updateRemindersRoutes from './routes/updateRemindersRoutes.js';
@@ -23,7 +23,7 @@ mongoose
   })
   .then(() => {
     // Start the email scheduler
-    mongoEmailScheduler.startScheduler();
+    startMongoEmailScheduler();
   })
   .catch((error) => {
     console.error('❌ MongoDB connection error:', error);
@@ -32,9 +32,16 @@ mongoose
 mongoose.Promise = Promise;
 
 const port = process.env.PORT || 8081;
+const allowedOrigin = process.env.FRONTEND_ORIGIN;
 const app = express();
 
-app.use(cors());
+app.use(
+  cors(
+    allowedOrigin
+      ? { origin: allowedOrigin }
+      : undefined
+  )
+);
 app.use(express.json());
 
 // Root endpoint
@@ -105,7 +112,6 @@ app.listen(port, () => {
 
 // Graceful shutdown
 process.on('SIGINT', () => {
-  mongoEmailScheduler.stop();
   mongoose.connection.close();
   process.exit(0);
 });
